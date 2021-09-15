@@ -16,8 +16,6 @@ const Auth = () => {
 
     const { TabPane } = Tabs;
 
-    console.log(activeTab);
-
     return (
         <Tabs activeKey={activeTab} onChange={(key) => { onChangeTab(key) }} >
             <TabPane tab='Login' key='1'>
