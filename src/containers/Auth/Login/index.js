@@ -10,15 +10,15 @@ const Login = () => {
 
     return (
         <Form
-            name="normal_login"
-            className="login-form"
+            name='normal_login'
+            className='login-form'
             initialValues={{
                 remember: true,
             }}
             onFinish={onFinish}
         >
             <Form.Item
-                name="email"
+                name='email'
                 rules={[
                     {
                         required: true,
@@ -26,10 +26,10 @@ const Login = () => {
                     },
                 ]}
             >
-                <Input prefix={<MailOutlined />} placeholder="Email" />
+                <Input prefix={<MailOutlined />} placeholder='Email' />
             </Form.Item>
             <Form.Item
-                name="password"
+                name='password'
                 rules={[
                     {
                         required: true,
@@ -39,13 +39,13 @@ const Login = () => {
             >
                 <Input
                     prefix={<LockOutlined />}
-                    type="password"
-                    placeholder="Password"
+                    type='password'
+                    placeholder='Password'
                 />
             </Form.Item>
             <br />
             <Form.Item>
-                <Button type="primary" htmlType="submit" block>
+                <Button type='primary' htmlType='submit' block>
                     Login
                 </Button>
             </Form.Item>

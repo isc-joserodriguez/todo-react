@@ -24,14 +24,17 @@ function App() {
   const logout = () => setToken(null);
 
   return (
-    <div className="App">
+    <div className='App'>
       <Nav
         auth={!!token}
         logout={logout}
         showModal={showModal}
         changeTab={changeTab}
       />
-      <Routes />
+      <Routes
+        showModal={showModal}
+        changeTab={changeTab}
+      />
       <Modal
         visible={authModalVisible}
         onCancel={hideModal}
