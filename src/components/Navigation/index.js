@@ -1,29 +1,32 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import * as actions from '../../store/actions';
+
 import { PageHeader, Button } from 'antd';
-import PropTypes from 'prop-types';
 
 import Icon from '../../assets/img/icon.png';
 
-const Nav = ({
-    auth,
-    logout,
-    showModal,
-    changeTab
-}) => {
-    const showAuth = (tab) => {
-        showModal();
-        changeTab(tab);
-    }
-    
-    let buttons = auth ? [
-        <Button key='1' type='primary' onClick={logout} >
+const Nav = () => {
+    const dispatch = useDispatch();
+    const onShowModal = useCallback((tab) => dispatch(actions.authModal(tab, true)), [dispatch]);
+
+    const isAuthenticated = useSelector(state => !!state.auth.token);
+
+    const history = useHistory();
+
+    const onLogout = useCallback(() => history.push('/logout'), [history]);
+
+
+    let buttons = isAuthenticated ? [
+        <Button key='1' type='primary' onClick={onLogout} >
             Logout
         </Button>
     ] : [
-        <Button key='1' type='primary' onClick={()=>showAuth('1')}>
+        <Button key='1' type='primary' onClick={() => onShowModal('1')}>
             Login
         </Button>,
-        <Button key='3' onClick={()=>showAuth('2')} >Signup</Button>,
+        <Button key='3' onClick={() => onShowModal('2')} >Signup</Button>,
     ];
     return (
         <>
@@ -35,13 +38,6 @@ const Nav = ({
             />
         </>
     )
-}
-
-Nav.propTypes = {
-    auth: PropTypes.bool.isRequired,
-    logout: PropTypes.func.isRequired,
-    showModal: PropTypes.func.isRequired,
-    changeTab: PropTypes.func.isRequired
 }
 
 export default Nav;

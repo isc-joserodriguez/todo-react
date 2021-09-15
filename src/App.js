@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
 import Nav from './components/Navigation';
 import Routes from './routes';
@@ -7,43 +7,32 @@ import { Modal } from 'antd';
 
 import Auth from './containers/Auth';
 
+import { useDispatch, useSelector } from 'react-redux';
+import * as actions from './store/actions';
+
 
 function App() {
-  const [token, setToken] = useState(null);
+  const dispatch = useDispatch();
 
-  const [tab, setTab] = useState('1');
+  const isAuthModalVisible = useSelector(state => !!state.auth.showModal);
+  const isAuthenticated = useSelector(state => !!state.auth.token);
+  const onTryAutoSignup = useCallback(() => dispatch(actions.authState()), [dispatch]);
+  const onHideModal = useCallback(() => dispatch(actions.authModal('1', false)), [dispatch]);
 
-  const [authModalVisible, setAuthModalVisible] = useState(false);
-
-  const showModal = () => setAuthModalVisible(true);
-
-  const hideModal = () => setAuthModalVisible(false);
-
-  const changeTab = (tab) => setTab(tab);
-
-  const logout = () => setToken(null);
+  useEffect(() => {
+    onTryAutoSignup();
+  }, [onTryAutoSignup]);
 
   return (
     <div className='App'>
-      <Nav
-        auth={!!token}
-        logout={logout}
-        showModal={showModal}
-        changeTab={changeTab}
-      />
-      <Routes
-        showModal={showModal}
-        changeTab={changeTab}
-      />
+      <Nav />
+      <Routes />
       <Modal
-        visible={authModalVisible}
-        onCancel={hideModal}
+        visible={isAuthModalVisible}
+        onCancel={onHideModal}
         footer={null}
       >
-        <Auth
-          tab={tab}
-          changeTab={changeTab}
-        />
+        <Auth />
       </Modal>
     </div>
   );

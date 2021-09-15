@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+
+import { useDispatch } from 'react-redux';
+import * as actions from '../../store/actions';
+
 import { Row, Col } from 'antd';
 import { Image, Button } from 'antd';
-import PropTypes from 'prop-types';
 
 import Icon from '../../assets/img/icon.png';
 import WelcomeLeft from '../../assets/img/welcome-left.png';
@@ -10,14 +13,10 @@ import WelcomeCenter from '../../assets/img/welcome-center.png';
 
 import classes from './index.module.css'
 
-const Home = ({
-    showModal,
-    changeTab
-}) => {
-    const clicked = () => {
-        showModal();
-        changeTab('1');
-    }
+const Home = () => {
+    const dispatch = useDispatch();
+    const onShowModal = useCallback((tab) => dispatch(actions.authModal('1', true)), [dispatch]);
+
     return (
         <Row justify='center' align='bottom'>
             <Col className={classes.Left}>
@@ -42,7 +41,7 @@ const Home = ({
                         src={WelcomeCenter}
                     />
                 </div>
-                <Button type='primary' className={classes.StartButton} onClick={clicked}>
+                <Button type='primary' className={classes.StartButton} onClick={onShowModal}>
                     START
                 </Button>
             </Col>
@@ -55,11 +54,6 @@ const Home = ({
             </Col>
         </Row>
     )
-}
-
-Home.propTypes = {
-    showModal: PropTypes.func.isRequired,
-    changeTab: PropTypes.func.isRequired
 }
 
 export default Home
