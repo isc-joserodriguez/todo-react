@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { Form, Input, Button } from 'antd';
-import { MailOutlined, LockOutlined } from '@ant-design/icons';
+import { MailOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
 
-const Login = () => {
+const Signup = () => {
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
     };
@@ -18,6 +18,30 @@ const Login = () => {
             onFinish={onFinish}
         >
             <Form.Item
+                name="name"
+                rules={[
+                    {
+                        required: true,
+                        message: 'Please input your Name!',
+                    },
+                ]}
+            >
+                <Input prefix={<UserOutlined />} placeholder="Name" />
+            </Form.Item>
+
+            <Form.Item
+                name="lastname"
+                rules={[
+                    {
+                        required: true,
+                        message: 'Please input your Lastname!',
+                    },
+                ]}
+            >
+                <Input prefix={<UserOutlined />} placeholder="Lastname" />
+            </Form.Item>
+
+            <Form.Item
                 name="email"
                 rules={[
                     {
@@ -28,6 +52,7 @@ const Login = () => {
             >
                 <Input prefix={<MailOutlined />} placeholder="Email" />
             </Form.Item>
+
             <Form.Item
                 name="password"
                 rules={[
@@ -43,14 +68,31 @@ const Login = () => {
                     placeholder="Password"
                 />
             </Form.Item>
+
+            <Form.Item
+                name="confirmPassword"
+                rules={[
+                    {
+                        required: true,
+                        message: 'Please confirm your Password!',
+                    },
+                ]}
+            >
+                <Input
+                    prefix={<LockOutlined />}
+                    type="password"
+                    placeholder="Confirm Password"
+                />
+            </Form.Item>
+
             <br />
             <Form.Item>
                 <Button type="primary" htmlType="submit" block>
-                    Login
+                    Signup
                 </Button>
             </Form.Item>
         </Form>
     );
-};
+}
 
-export default Login
+export default Signup

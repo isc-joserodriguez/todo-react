@@ -20,10 +20,10 @@ const Nav = ({
             Logout
         </Button>
     ] : [
-        <Button key="3" onClick={()=>showAuth('2')} >Register</Button>,
         <Button key="1" type="primary" onClick={()=>showAuth('1')}>
             Login
         </Button>,
+        <Button key="3" onClick={()=>showAuth('2')} >Signup</Button>,
     ];
     return (
         <>
