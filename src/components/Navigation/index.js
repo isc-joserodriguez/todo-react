@@ -16,20 +16,20 @@ const Nav = ({
     }
     
     let buttons = auth ? [
-        <Button key="2" type="primary" onClick={logout} >
+        <Button key='1' type='primary' onClick={logout} >
             Logout
         </Button>
     ] : [
-        <Button key="1" type="primary" onClick={()=>showAuth('1')}>
+        <Button key='1' type='primary' onClick={()=>showAuth('1')}>
             Login
         </Button>,
-        <Button key="3" onClick={()=>showAuth('2')} >Signup</Button>,
+        <Button key='3' onClick={()=>showAuth('2')} >Signup</Button>,
     ];
     return (
         <>
             <PageHeader
-                className="header"
-                title="TO-DO List"
+                className='header'
+                title='TO-DO List'
                 extra={buttons}
                 avatar={{ src: Icon }}
             />

@@ -10,15 +10,15 @@ const Signup = () => {
 
     return (
         <Form
-            name="normal_login"
-            className="login-form"
+            name='normal_login'
+            className='login-form'
             initialValues={{
                 remember: true,
             }}
             onFinish={onFinish}
         >
             <Form.Item
-                name="name"
+                name='name'
                 rules={[
                     {
                         required: true,
@@ -26,11 +26,11 @@ const Signup = () => {
                     },
                 ]}
             >
-                <Input prefix={<UserOutlined />} placeholder="Name" />
+                <Input prefix={<UserOutlined />} placeholder='Name' />
             </Form.Item>
 
             <Form.Item
-                name="lastname"
+                name='lastname'
                 rules={[
                     {
                         required: true,
@@ -38,11 +38,11 @@ const Signup = () => {
                     },
                 ]}
             >
-                <Input prefix={<UserOutlined />} placeholder="Lastname" />
+                <Input prefix={<UserOutlined />} placeholder='Lastname' />
             </Form.Item>
 
             <Form.Item
-                name="email"
+                name='email'
                 rules={[
                     {
                         required: true,
@@ -50,11 +50,11 @@ const Signup = () => {
                     },
                 ]}
             >
-                <Input prefix={<MailOutlined />} placeholder="Email" />
+                <Input prefix={<MailOutlined />} placeholder='Email' />
             </Form.Item>
 
             <Form.Item
-                name="password"
+                name='password'
                 rules={[
                     {
                         required: true,
@@ -64,13 +64,13 @@ const Signup = () => {
             >
                 <Input
                     prefix={<LockOutlined />}
-                    type="password"
-                    placeholder="Password"
+                    type='password'
+                    placeholder='Password'
                 />
             </Form.Item>
 
             <Form.Item
-                name="confirmPassword"
+                name='confirmPassword'
                 rules={[
                     {
                         required: true,
@@ -80,14 +80,14 @@ const Signup = () => {
             >
                 <Input
                     prefix={<LockOutlined />}
-                    type="password"
-                    placeholder="Confirm Password"
+                    type='password'
+                    placeholder='Confirm Password'
                 />
             </Form.Item>
 
             <br />
             <Form.Item>
-                <Button type="primary" htmlType="submit" block>
+                <Button type='primary' htmlType='submit' block>
                     Signup
                 </Button>
             </Form.Item>
