@@ -1,0 +1,30 @@
+.TodoList {
+    padding: 20px 10px;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+.Item {
+    padding: 15px !important;
+}
+
+.Item:hover {
+    background-color: rgb(221, 221, 221);
+}
+
+.Complete {
+    background-color: rgb(181, 255, 181);
+}
+
+.Expired {
+    background-color: rgb(255, 148, 136);
+}
+
+.CompleteTitle {
+    color: gray;
+    text-decoration: line-through;
+}
+
+.Click {
+    cursor: pointer;
+}

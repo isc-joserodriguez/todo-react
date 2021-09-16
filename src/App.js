@@ -17,7 +17,7 @@ function App() {
   const dispatch = useDispatch();
 
   const isAuthModalVisible = useSelector(state => !!state.auth.showModal);
-  const onTryAutoSignup = useCallback(() => dispatch(actions.authState(history)), [dispatch]);
+  const onTryAutoSignup = useCallback(() => dispatch(actions.authState(history)), [dispatch, history]);
   const onHideModal = useCallback(() => dispatch(actions.authModal('1', false)), [dispatch]);
 
   useEffect(() => {

@@ -19,7 +19,7 @@ export const authSuccess = (token, history) => {
 export const authFail = (error) => {
     return {
         type: actionTypes.AUTH_FAIL,
-        error: error
+        error
     };
 };
 

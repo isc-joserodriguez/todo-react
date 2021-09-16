@@ -13,7 +13,7 @@ const Signup = () => {
 
     const dispatch = useDispatch();
 
-    const onSignup = useCallback((data) => dispatch(actions.auth(data, true, history)), [dispatch]);
+    const onSignup = useCallback((data) => dispatch(actions.auth(data, true, history)), [dispatch, history]);
 
     const isLoading = useSelector(state => state.auth.loading);
 

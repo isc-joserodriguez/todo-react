@@ -13,7 +13,7 @@ const Login = () => {
 
     const dispatch = useDispatch();
 
-    const onLogin = useCallback((data) => dispatch(actions.auth(data, false, history)), [dispatch]);
+    const onLogin = useCallback((data) => dispatch(actions.auth(data, false, history)), [dispatch, history]);
 
     const isLoading = useSelector(state => state.auth.loading);
 
