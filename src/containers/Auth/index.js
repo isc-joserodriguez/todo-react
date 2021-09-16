@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../store/actions';
@@ -15,8 +15,6 @@ const Auth = () => {
     const onChangeTab = useCallback((tab) => dispatch(actions.toggleAuthModal(tab, true)), [dispatch]);
 
     const { TabPane } = Tabs;
-
-    console.log(activeTab);
 
     return (
         <Tabs activeKey={activeTab} onChange={(key) => { onChangeTab(key) }} >

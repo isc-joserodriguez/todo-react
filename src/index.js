@@ -11,7 +11,7 @@ import reportWebVitals from './reportWebVitals';
 
 //Redux
 import authReducer from './store/reducers/auth';
-import tasksReducer from './store/reducers/tasks';
+import tasksReducer from './store/reducers/task';
 
 //ant design
 import 'antd/dist/antd.css';
@@ -20,7 +20,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    tasks: tasksReducer,
+    task: tasksReducer,
 });
 
 const store = createStore(rootReducer, composeEnhancers(

@@ -8,17 +8,18 @@ export const authStart = () => {
     };
 };
 
-export const authSuccess = (token) => {
+export const authSuccess = (token, history) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
-        idToken: token
+        idToken: token,
+        history
     };
 };
 
 export const authFail = (error) => {
     return {
         type: actionTypes.AUTH_FAIL,
-        error: error
+        error
     };
 };
 
@@ -29,29 +30,32 @@ export const logout = () => {
     }
 }
 
-export const auth = (data, isSignup) => {
+export const auth = (data, isSignup, history) => {
     return dispatch => {
         dispatch(authStart());
-        let url = `${process.env.REACT_APP_API}/signup`;
-        if (!isSignup) url = `${process.env.REACT_APP_API}/login`
+        let url = isSignup ?
+            `${process.env.REACT_APP_API}/user/signup` :
+            `${process.env.REACT_APP_API}/user/login`
         axios.post(url, data)
             .then(response => {
-                localStorage.setItem('token', response.detail.token);
-                dispatch(authSuccess(response.detail.token));
+                let token = `Bearer ${response.data.detail.token}`;
+                localStorage.setItem('token', token);
+                dispatch(authSuccess(token, history));
             })
             .catch(err => {
-                dispatch(authFail('Something wrong'));
+                let errorMessage = isSignup ? "This email address is already being used" : "Wrong email address or password.";
+                dispatch(authFail(errorMessage));
             });
     };
 };
 
-export const authState = () => {
+export const authState = (history) => {
     return dispatch => {
         const token = localStorage.getItem('token');
         if (!token) {
             dispatch(logout());
         } else {
-            dispatch(authSuccess(token));
+            dispatch(authSuccess(token, history));
         }
     };
 };

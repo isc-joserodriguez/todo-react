@@ -1,4 +1,5 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import Nav from './components/Navigation';
 import Routes from './routes';
@@ -12,11 +13,11 @@ import * as actions from './store/actions';
 
 
 function App() {
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const isAuthModalVisible = useSelector(state => !!state.auth.showModal);
-  const isAuthenticated = useSelector(state => !!state.auth.token);
-  const onTryAutoSignup = useCallback(() => dispatch(actions.authState()), [dispatch]);
+  const onTryAutoSignup = useCallback(() => dispatch(actions.authState(history)), [dispatch, history]);
   const onHideModal = useCallback(() => dispatch(actions.authModal('1', false)), [dispatch]);
 
   useEffect(() => {

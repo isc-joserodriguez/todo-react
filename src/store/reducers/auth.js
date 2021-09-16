@@ -14,10 +14,12 @@ const authStart = (state, action) => {
 }
 
 const authSuccess = (state, action) => {
+    action.history.push('/todos');
     return updateObject(state, {
         token: action.idToken,
         error: null,
-        loading: false
+        loading: false,
+        showModal: false
     });
 }
 
@@ -35,7 +37,8 @@ const authLogout = (state, action) => {
 const toggleAuthModal = (state, action) => {
     return updateObject(state, {
         tabActive: action.tab,
-        showModal: action.showModal
+        showModal: action.showModal,
+        error: null,
     });
 }
 
