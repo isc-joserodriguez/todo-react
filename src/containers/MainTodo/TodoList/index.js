@@ -77,6 +77,9 @@ const TodoList = () => {
                                     onClick={() => { onUpdateTasks(item._id, { status: !item.status }) }}
                                 />
                                 <div>
+                                    {`Expiration: ${new Date(item.dueDate).toISOString().split('T')[0]}`}
+                                    <br />
+                                    <br />
                                     <Button type='primary' className={classes.StartButton} onClick={() => onShowModal(item._id)}>
                                         Info
                                     </Button>
