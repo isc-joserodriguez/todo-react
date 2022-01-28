@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = `${process.env.REACT_APP_API_Connect}/user`;
+const URL = `${process.env.REACT_APP_API}/user`;
 
 export const login = ({ data }) => {
     axios.post(

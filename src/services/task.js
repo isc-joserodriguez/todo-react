@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = `${process.env.REACT_APP_API_Connect}/task`;
+const URL = `${process.env.REACT_APP_API}/task`;
 
 export const createTask = ({ data }) => {
     axios.post(URL, data, {

@@ -7,5 +7,9 @@ REACT_APP_API = http://localhost:300 #API_URI
 ```
 # Deployed
 
-<!-- [GitHub Pages](https://isc-joserodriguez.github.io/todo-react/) -->
-[Netlify](https://todo-list-bs.netlify.app/)
+[GitHub Pages](https://isc-joserodriguez.github.io/todo-react)
+
+# Backend
+
+[Repo](https://github.com/isc-joserodriguez/api-todo)
+[Deployed](https://todo-app-bs.herokuapp.com/v1)
